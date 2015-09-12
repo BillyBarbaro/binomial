@@ -6,8 +6,15 @@
 
 // Largest 32 bit integer
 #define LOOP_ITERATIONS (0x7fffffff)
+void print_current_time() {
+	time_t raw_time;
+	struct tm *display_time;
 
-void print_termination_info() {
+	time(&raw_time);
+	display_time = localtime(&raw_time);
+	printf("Current system time: %s", asctime(display_time));
+}
+void print_process_time() {
 	struct tms process_time;
 	clock_t result;
 	double user_time_seconds;
@@ -25,6 +32,13 @@ void print_termination_info() {
 	printf("User time: %f seconds\n", user_time_seconds);
 	printf("System time: %f seconds\n", system_time_seconds);
 }
+
+void print_termination_info(char* process_name) {
+	printf("%s preparing to terminate.\n", process_name);
+	print_current_time();
+	print_process_time();
+}
+
 
 void print_termination_status(pid_t pid, int status) {
 	printf("Child process %d exited with status %d\n", pid, WEXITSTATUS(status));
@@ -62,8 +76,7 @@ int main() {
 
 	// If it's the child process, don't continue
 	if (start_result == 0) {
-		printf("First chilld preparing to terminate.\n");
-		print_termination_info();	
+		print_termination_info("First child");	
 		return EXIT_SUCCESS;
 	}
 	return EXIT_SUCCESS;
