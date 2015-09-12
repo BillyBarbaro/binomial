@@ -5,10 +5,20 @@
 // Largest 32 bit integer
 #define LOOP_ITERATIONS (0x7fffffff)
 
-pid_t printStartMessage() {
+void print_process_info() {
+	
+}
+
+void print_termination_status(pid_t pid, int status) {
+	printf("Child process %d exited with status %d\n", pid, WEXITSTATUS(status));
+}
+
+pid_t print_start_message() {
 
 	int i;
+	int status;
 	pid_t fork_result;
+	pid_t terminated_pid;
 
 	fork_result = fork();
 
@@ -18,12 +28,11 @@ pid_t printStartMessage() {
 		return EXIT_SUCCESS;
 	}
 	else if (fork_result > 0) { 
-		wait();
-		printf("I am the parent\n");
+		terminated_pid = wait(&status);
+		print_termination_status(terminated_pid, status);
 	}
 	else {
 		perror("fork() failed");
-		return EXIT_FAILURE;
 	}
 	return fork_result;
 }
@@ -32,15 +41,12 @@ int main() {
 
 	pid_t start_result;
 	
-	start_result = printStartMessage();
+	start_result = print_start_message();
 
 	if (start_result == 0) {	
 		return EXIT_SUCCESS;
 	}
-	else if (start_result > 0) {
-		printf("I am the parent\n");
-	}
-	else {
+	else if (start_result < 0) {
 		return EXIT_FAILURE;
 	}
  
