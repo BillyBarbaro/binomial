@@ -6,6 +6,7 @@
 
 // Largest 32 bit integer
 #define LOOP_ITERATIONS (0x7fffffff)
+
 void print_current_time() {
 	time_t raw_time;
 	struct tm *display_time;
@@ -33,9 +34,28 @@ void print_process_time() {
 	printf("System time: %f seconds\n", system_time_seconds);
 }
 
+void print_process_info() {
+	char* user_id;
+	uid_t euid, uid;
+	gid_t egid, gid;
+
+	cuserid(user_id);
+	euid = geteuid();
+	uid = getuid();
+	egid = getegid();
+	gid = getgid();
+
+	printf("Process Username: %s\n", user_id);
+	printf("Effective User ID: %d\n", euid);
+	printf("User ID: %d\n", uid);
+	printf("Effective Group ID: %d\n", egid);
+	printf("Groupd ID: %d\n", gid);
+}
+
 void print_termination_info(char* process_name) {
 	printf("%s preparing to terminate.\n", process_name);
 	print_current_time();
+	print_process_info();
 	print_process_time();
 }
 
