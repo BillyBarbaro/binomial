@@ -6,6 +6,7 @@
 
 // Largest 32 bit integer
 #define LOOP_ITERATIONS (0x7fffffff)
+#define SLEEP_INTERVAL 4
 
 void print_current_time() {
 	time_t raw_time;
@@ -61,7 +62,12 @@ void print_termination_info(char* process_name) {
 
 
 void print_termination_status(pid_t pid, int status) {
-	printf("Child process %d exited with status %d\n", pid, WEXITSTATUS(status));
+	printf("Child process %d exited with status %d\n\n", pid, WEXITSTATUS(status));
+}
+
+void fork_failure() {
+	perror("fork() failure");
+	exit(EXIT_FAILURE);
 }
 
 pid_t print_start_message() {
@@ -69,29 +75,97 @@ pid_t print_start_message() {
 	int i;
 	int status;
 	pid_t fork_result;
-	pid_t terminated_pid;
 
 	fork_result = fork();
 
 	if (fork_result == 0) {
-		printf("(n (n-2)) binomial coefficient computations of integers n=2, 3, 10, start now!\n");
+		printf("\n(n (n-2)) binomial coefficient computations of integers n=2, 3, 10, start now!\n");
                 for(i = 0; i < LOOP_ITERATIONS; i++) { }
 	}
 	else if (fork_result > 0) { 
-		terminated_pid = wait(&status);
-		print_termination_status(terminated_pid, status);
+		wait(&status);
+		print_termination_status(fork_result, status);
 	}
 	else {
-		perror("fork() failed");
-		exit(EXIT_FAILURE);
+		fork_failure();
 	}
+	return fork_result;
+}
+
+int factorial(int i) {
+	int result = 1;
+	for(i; i > 1; i--) {
+		result = result * i;
+	}
+	return result;
+}
+
+int calculate_binomial(int total, int chosen) {
+	int total_factorial, chosen_factorial, difference_factorial;
+	total_factorial = factorial(total);
+	chosen_factorial = factorial(chosen);
+	difference_factorial = factorial(total - chosen);
+
+	return total_factorial / (chosen_factorial * difference_factorial);
+}
+
+void print_binomials(int start) {
+	int i;
+	int binomial_coef;
+
+	for(i = start; i < 11; i += 2) {
+		binomial_coef = calculate_binomial(i, i-2);
+		printf("The process %d calculated %i choose %i is %i.\n", getpid(), i, i-2, binomial_coef);
+		sleep(SLEEP_INTERVAL);
+	}
+}
+
+pid_t generate_binomials() {
+
+	int status;
+	pid_t first_fork_result;
+	pid_t second_fork_result;
+	pid_t fork_result;
+
+	first_fork_result = fork();
+
+	if (first_fork_result == 0) {
+		print_binomials(2);
+		fork_result = first_fork_result;
+	}
+	else if (first_fork_result > 0) {
+		sleep(SLEEP_INTERVAL/2);
+
+		second_fork_result = fork();
+
+		if (second_fork_result == 0) {
+			print_binomials(3);
+			fork_result = second_fork_result;
+			printf("\n");
+		}
+		else if (second_fork_result > 0) {
+			wait(&status);
+			print_termination_status(first_fork_result, status);
+			wait(&status);
+			print_termination_status(second_fork_result, status);
+		}
+		else {
+			fork_failure();
+		}
+		fork_result = second_fork_result;
+	}
+	else {
+		fork_failure();
+	}
+
 	return fork_result;
 }
 
 int main() {
 
 	pid_t start_result;
-	
+	pid_t binomial_result;
+
 	start_result = print_start_message();
 
 	// If it's the child process, don't continue
@@ -99,5 +173,13 @@ int main() {
 		print_termination_info("First child");	
 		return EXIT_SUCCESS;
 	}
+
+	binomial_result = generate_binomials();
+	
+	if (binomial_result == 0) {
+		print_termination_info("Binomial child");
+		return EXIT_SUCCESS;
+	}
+
 	return EXIT_SUCCESS;
 }
