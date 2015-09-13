@@ -70,6 +70,11 @@ void fork_failure() {
 	exit(EXIT_FAILURE);
 }
 
+void spend_CPU_time() {
+	int i;
+	for(i = 0; i < LOOP_ITERATIONS; i++) { }
+}
+
 pid_t print_start_message() {
 
 	int i;
@@ -80,7 +85,7 @@ pid_t print_start_message() {
 
 	if (fork_result == 0) {
 		printf("\n(n (n-2)) binomial coefficient computations of integers n=2, 3, 10, start now!\n");
-                for(i = 0; i < LOOP_ITERATIONS; i++) { }
+		spend_CPU_time();
 	}
 	else if (fork_result > 0) { 
 		wait(&status);
@@ -116,6 +121,7 @@ void print_binomials(int start) {
 	for(i = start; i < 11; i += 2) {
 		binomial_coef = calculate_binomial(i, i-2);
 		printf("The process %d calculated %i choose %i is %i.\n", getpid(), i, i-2, binomial_coef);
+		spend_CPU_time();
 		sleep(SLEEP_INTERVAL);
 	}
 }
