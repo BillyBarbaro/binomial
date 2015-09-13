@@ -167,6 +167,26 @@ pid_t generate_binomials() {
 	return fork_result;
 }
 
+void run_ls() {
+	int status;
+	int fork_result;
+	const char* ls_file = "ls";
+	char* const ls_args[] = {"ls", "-l", NULL};
+
+	fork_result = fork();
+
+	if (fork_result == 0) {
+		execvp(ls_file, ls_args);
+	}
+	else if (fork_result > 0) {
+		wait(&status);
+		print_termination_status(fork_result, status);
+	}
+	else {
+		fork_failure();
+	}
+}
+
 int main() {
 
 	pid_t start_result;
@@ -187,5 +207,8 @@ int main() {
 		return EXIT_SUCCESS;
 	}
 
+	run_ls();
+
+	print_termination_info("\nParent process");
 	return EXIT_SUCCESS;
 }
