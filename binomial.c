@@ -217,6 +217,8 @@ int main() {
 
 	run_ls();
 
+	spend_CPU_time();
+
 	print_termination_info("\nParent process");
 	return EXIT_SUCCESS;
 }
