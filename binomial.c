@@ -50,7 +50,7 @@ void print_process_info() {
 	printf("Effective User ID: %d\n", euid);
 	printf("User ID: %d\n", uid);
 	printf("Effective Group ID: %d\n", egid);
-	printf("Groupd ID: %d\n", gid);
+	printf("Group ID: %d\n", gid);
 }
 
 void print_termination_info(char* process_name) {
@@ -58,6 +58,13 @@ void print_termination_info(char* process_name) {
 	print_current_time();
 	print_process_info();
 	print_process_time();
+}
+
+void print_exec_info(char* exec_name) {
+	printf("Preparing to hand control to %s.\n", exec_name);
+	print_current_time();
+	print_process_info();
+	printf("\n");
 }
 
 
@@ -176,6 +183,7 @@ void run_ls() {
 	fork_result = fork();
 
 	if (fork_result == 0) {
+		print_exec_info("ls");
 		execvp(ls_file, ls_args);
 	}
 	else if (fork_result > 0) {
