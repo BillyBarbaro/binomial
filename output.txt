@@ -1,0 +1,66 @@
+
+(n (n-2)) binomial coefficient computations of integers n=2, 3, 10, start now!
+First child preparing to terminate.
+Current system time: Mon Sep 14 17:33:28 2015
+Process Username: wxb107
+Effective User ID: 1585677514
+User ID: 1585677514
+Effective Group ID: 1585677514
+Group ID: 1585677514
+User time: 0.000468 seconds
+System time: 0.000001 seconds
+Child process 17722 exited with status 0
+
+The process 17724 calculated 3 choose 1 is 3.
+The process 17724 calculated 5 choose 3 is 10.
+The process 17724 calculated 7 choose 5 is 21.
+The process 17724 calculated 9 choose 7 is 36.
+
+Binomial child preparing to terminate.
+Current system time: Mon Sep 14 17:34:16 2015
+Process Username: wxb107
+Effective User ID: 1585677514
+User ID: 1585677514
+Effective Group ID: 1585677514
+Group ID: 1585677514
+User time: 0.001870 seconds
+System time: 0.000009 seconds
+Child process 17722 exited with status 0
+
+The process 17723 calculated 2 choose 0 is 1.
+The process 17723 calculated 4 choose 2 is 6.
+The process 17723 calculated 6 choose 4 is 15.
+The process 17723 calculated 8 choose 6 is 28.
+The process 17723 calculated 10 choose 8 is 45.
+Binomial child preparing to terminate.
+Current system time: Mon Sep 14 17:34:23 2015
+Process Username: wxb107
+Effective User ID: 1585677514
+User ID: 1585677514
+Effective Group ID: 1585677514
+Group ID: 1585677514
+User time: 0.002341 seconds
+System time: 0.000011 seconds
+total 32
+-rw-rw-r-- 1 wxb107 wxb107   125 Sep 14 17:31 Makefile
+-rwxrwxr-x 1 wxb107 wxb107 12404 Sep 14 17:32 binomial
+-rw-rw-r-- 1 wxb107 wxb107  4596 Sep 14 17:19 binomial.c
+-rw-rw-r-- 1 wxb107 wxb107  1393 Sep 14 17:34 output.txt
+Child process 17722 exited with status 0
+
+Child process 17723 exited with status 0
+
+Child process 17724 exited with status 0
+
+Child process 17725 exited with status 0
+
+
+Parent process preparing to terminate.
+Current system time: Mon Sep 14 17:34:27 2015
+Process Username: wxb107
+Effective User ID: 1585677514
+User ID: 1585677514
+Effective Group ID: 1585677514
+Group ID: 1585677514
+User time: 0.000466 seconds
+System time: 0.000000 seconds
