@@ -40,7 +40,7 @@ void print_process_info() {
 	uid_t euid, uid;
 	gid_t egid, gid;
 
-	cuserid(user_id);
+	user_id = (char*) cuserid(NULL);
 	euid = geteuid();
 	uid = getuid();
 	egid = getegid();
