@@ -1,13 +1,13 @@
 Answer 1:  
 
-Username- 
+Username- The username of the user who executed the process.  (So in my case, wxb107). 
 
 Real User ID- This provides the ID by which the system identifies the user that excuted the program
 
 Effective User ID- This provides the ID under which the program is operating.  Oftentimes it is used to give an excuting program higher privilege in order to do something the user who launched it doesn't have permission to do.  One example of a program where real and effective user IDs are not the same is the passwd command for changing a user's password.
 
-Real Group ID-  
+Real Group ID- in Unix, users are assigned to groups to determine their permissions.  The real group ID is an integer between 0 and 32,767 that identifies this group. 
 
-Effective Group ID-
+Effective Group ID- in Unix, users are assigned to groups to determine their permissions.  The effective group ID is an integer between 0 and 32,767 that identifies the group under who's permissions the process is running under.  So if a process needs root priviliges to perform an operation, it's effective group ID will be changed to one with the ability to execute these operations.
 
 Answer 2:  Becuase the operations this program is performing are so minimal, modern hardware can complete them in an amount of time much smaller than the computer has the percision to keep track of and store.  Looping to a large number takes up time on the CPU so when we display the user and system CPU time, those values won't be equal to 0.00000.

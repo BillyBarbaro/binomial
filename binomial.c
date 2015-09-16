@@ -128,9 +128,9 @@ void print_binomials(int start) {
 	for(i = start; i < 11; i += 2) {
 		binomial_coef = calculate_binomial(i, i-2);
 		printf("The process %d calculated %i choose %i is %i.\n", getpid(), i, i-2, binomial_coef);
-		spend_CPU_time();
 		sleep(SLEEP_INTERVAL);
 	}
+	spend_CPU_time();
 }
 
 pid_t generate_binomials() {
