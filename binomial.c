@@ -16,6 +16,7 @@ void print_current_time() {
 	display_time = localtime(&raw_time);
 	printf("Current system time: %s", asctime(display_time));
 }
+
 void print_process_time() {
 	struct tms process_time;
 	clock_t result;
@@ -67,7 +68,6 @@ void print_exec_info(char* exec_name) {
 	printf("\n");
 }
 
-
 void print_termination_status(pid_t pid, int status) {
 	printf("Child process %d exited with status %d\n\n", pid, WEXITSTATUS(status));
 }
@@ -114,10 +114,12 @@ int factorial(int i) {
 
 int calculate_binomial(int total, int chosen) {
 	int total_factorial, chosen_factorial, difference_factorial;
+
 	total_factorial = factorial(total);
 	chosen_factorial = factorial(chosen);
 	difference_factorial = factorial(total - chosen);
 
+	// This quantity will always be an integer value
 	return total_factorial / (chosen_factorial * difference_factorial);
 }
 
@@ -142,20 +144,24 @@ pid_t generate_binomials() {
 
 	first_fork_result = fork();
 
+	// If child, print even binomials
 	if (first_fork_result == 0) {
 		print_binomials(2);
 		fork_result = first_fork_result;
 	}
 	else if (first_fork_result > 0) {
+		// Wait half the sleep interval to spread the 2 processes apart
 		sleep(SLEEP_INTERVAL/2);
 
 		second_fork_result = fork();
 
+		// If child, print odd binomials
 		if (second_fork_result == 0) {
 			print_binomials(3);
 			fork_result = second_fork_result;
 			printf("\n");
 		}
+		// If parent, wait on 2 children to terminate
 		else if (second_fork_result > 0) {
 			wait(&status);
 			print_termination_status(first_fork_result, status);
@@ -210,6 +216,7 @@ int main() {
 
 	binomial_result = generate_binomials();
 	
+	// If it is the child process, don't continue
 	if (binomial_result == 0) {
 		print_termination_info("Binomial child");
 		return EXIT_SUCCESS;
