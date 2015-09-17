@@ -1,70 +1,11 @@
-Script started on Tue Sep 15 20:35:16 2015
-]0;wxb107@eecslinab3: ~/EECS338/HW01wxb107@eecslinab3:~/EECS338/HW01$ make
+Script started on Wed Sep 16 23:52:16 2015
+]0;wxb107@eecslinab3: ~/HW01wxb107@eecslinab3:~/HW01$ make
 gcc -o binomial binomial.c
-]0;wxb107@eecslinab3: ~/EECS338/HW01wxb107@eecslinab3:~/EECS338/HW01$ ../  /binomial 
+]0;wxb107@eecslinab3: ~/HW01wxb107@eecslinab3:~/HW01$ ./binomial
 
 (n (n-2)) binomial coefficient computations of integers n=2, 3, 10, start now!
 First child preparing to terminate.
-Current system time: Tue Sep 15 20:35:33 2015
-Process Username: wxb107
-Effective User ID: 1585677514
-User ID: 1585677514
-Effective Group ID: 1585677514
-Group ID: 1585677514
-User time: 0.000462 seconds
-System time: 0.000003 seconds
-Child process 24868 exited with status 0
-
-The process 24869 calculated 2 choose 0 is 1.
-The process 24870 calculated 3 choose 1 is 3.
-The process 24869 calculated 4 choose 2 is 6.
-The process 24870 calculated 5 choose 3 is 10.
-The process 24869 calculated 6 choose 4 is 15.
-The process 24870 calculated 7 choose 5 is 21.
-The process 24869 calculated 8 choose 6 is 28.
-The process 24870 calculated 9 choose 7 is 36.
-The process 24869 calculated 10 choose 8 is 45.
-
-Binomial child preparing to terminate.
-Current system time: Tue Sep 15 20:35:58 2015
-Process Username: wxb107
-Effective User ID: 1585677514
-User ID: 1585677514
-Effective Group ID: 1585677514
-Group ID: 1585677514
-User time: 0.000467 seconds
-System time: 0.000000 seconds
-Child process 24869 exited with status 0
-
-Binomial child preparing to terminate.
-Current system time: Tue Sep 15 20:36:00 2015
-Process Username: wxb107
-Effective User ID: 1585677514
-User ID: 1585677514
-Effective Group ID: 1585677514
-Group ID: 1585677514
-User time: 0.000466 seconds
-System time: 0.000002 seconds
-Child process 24870 exited with status 0
-
-Preparing to hand control to ls.
-Current system time: Tue Sep 15 20:36:00 2015
-Process Username: wxb107
-Effective User ID: 1585677514
-User ID: 1585677514
-Effective Group ID: 1585677514
-Group ID: 1585677514
-
-total 32
--rw-rw-r-- 1 wxb107 wxb107   125 Sep 14 17:31 Makefile
--rw-rw-r-- 1 wxb107 wxb107  1468 Sep 15 20:31 answers.txt
--rwxrwxr-x 1 wxb107 wxb107 12404 Sep 15 20:35 binomial
--rw-rw-r-- 1 wxb107 wxb107  4595 Sep 15 20:04 binomial.c
-Child process 24871 exited with status 0
-
-
-Parent process preparing to terminate.
-Current system time: Tue Sep 15 20:36:05 2015
+Current system time: Wed Sep 16 23:52:27 2015
 Process Username: wxb107
 Effective User ID: 1585677514
 User ID: 1585677514
@@ -72,6 +13,66 @@ Effective Group ID: 1585677514
 Group ID: 1585677514
 User time: 0.000465 seconds
 System time: 0.000000 seconds
-]0;wxb107@eecslinab3: ~/EECS338/HW01wxb107@eecslinab3:~/EECS338/HW01$ exit
+Child process 4004 exited with status 0
 
-Script done on Tue Sep 15 20:36:18 2015
+The process 4009 calculated 2 choose 0 is 1.
+The process 4010 calculated 3 choose 1 is 3.
+The process 4009 calculated 4 choose 2 is 6.
+The process 4010 calculated 5 choose 3 is 10.
+The process 4009 calculated 6 choose 4 is 15.
+The process 4010 calculated 7 choose 5 is 21.
+The process 4009 calculated 8 choose 6 is 28.
+The process 4010 calculated 9 choose 7 is 36.
+The process 4009 calculated 10 choose 8 is 45.
+
+Binomial child preparing to terminate.
+Current system time: Wed Sep 16 23:52:52 2015
+Process Username: wxb107
+Effective User ID: 1585677514
+User ID: 1585677514
+Effective Group ID: 1585677514
+Group ID: 1585677514
+User time: 0.000464 seconds
+System time: 0.000002 seconds
+Child process 4009 exited with status 0
+
+Binomial child preparing to terminate.
+Current system time: Wed Sep 16 23:52:54 2015
+Process Username: wxb107
+Effective User ID: 1585677514
+User ID: 1585677514
+Effective Group ID: 1585677514
+Group ID: 1585677514
+User time: 0.000465 seconds
+System time: 0.000002 seconds
+Child process 4010 exited with status 0
+
+Preparing to hand control to ls.
+Current system time: Wed Sep 16 23:52:54 2015
+Process Username: wxb107
+Effective User ID: 1585677514
+User ID: 1585677514
+Effective Group ID: 1585677514
+Group ID: 1585677514
+
+total 36
+-rw-r--r-- 1 wxb107 wxb107   125 Sep 16 23:46 Makefile
+-rw-r--r-- 1 wxb107 wxb107  1457 Sep 16 23:46 answers.txt
+-rwxrwxr-x 1 wxb107 wxb107 12404 Sep 16 23:52 binomial
+-rw-r--r-- 1 wxb107 wxb107  4965 Sep 16 23:50 binomial.c
+-rw-r--r-- 1 wxb107 wxb107  2620 Sep 16 23:46 output.txt
+Child process 4021 exited with status 0
+
+Parent's PID is 4003
+Parent process preparing to terminate.
+Current system time: Wed Sep 16 23:52:59 2015
+Process Username: wxb107
+Effective User ID: 1585677514
+User ID: 1585677514
+Effective Group ID: 1585677514
+Group ID: 1585677514
+User time: 0.000465 seconds
+System time: 0.000000 seconds
+]0;wxb107@eecslinab3: ~/HW01wxb107@eecslinab3:~/HW01$ exit
+
+Script done on Wed Sep 16 23:53:09 2015

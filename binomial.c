@@ -205,6 +205,7 @@ int main() {
 
 	pid_t start_result;
 	pid_t binomial_result;
+	pid_t parent_pid;
 
 	start_result = print_start_message();
 
@@ -226,6 +227,9 @@ int main() {
 
 	spend_CPU_time();
 
+	parent_pid = getpid();
+	
+	printf("Parent's PID is %d", parent_pid);
 	print_termination_info("\nParent process");
 	return EXIT_SUCCESS;
 }
